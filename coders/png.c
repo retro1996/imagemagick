@@ -12733,13 +12733,13 @@ static MagickBooleanType WriteOneJNGImage(MngWriteInfo *mng_info,
     exception);
 
   if (blob == (unsigned char *) NULL)
-    {         
+    {
       if (jpeg_image != (Image *)NULL)
-        jpeg_image=DestroyImage(jpeg_image);     
+        jpeg_image=DestroyImage(jpeg_image);
       if (jpeg_image_info != (ImageInfo *)NULL)
         jpeg_image_info=DestroyImageInfo(jpeg_image_info);
       return(MagickFalse);
-    }       
+    }
 
   if (logging != MagickFalse)
     {
