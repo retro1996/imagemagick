@@ -330,13 +330,11 @@ static MagickBooleanType SerializeImage(const ImageInfo *image_info,
     extent;
 
   ssize_t
-    x;
+    x,
+    y;
 
   unsigned char
     *q;
-
-  ssize_t
-    y;
 
   assert(image != (Image *) NULL);
   assert(image->signature == MagickCoreSignature);
@@ -344,11 +342,9 @@ static MagickBooleanType SerializeImage(const ImageInfo *image_info,
     (void) LogMagickEvent(TraceEvent,GetMagickModule(),"%s",image->filename);
   status=MagickTrue;
   channels=(image->colorspace == CMYKColorspace ? 4 : 3);
-  if (HeapOverflowSanityCheckGetSize(channels,(size_t) image->columns,
-        &extent) != MagickFalse)
+  if (HeapOverflowSanityCheckGetSize(channels,(size_t) image->columns,&extent) != MagickFalse)
     ThrowWriterException(ResourceLimitError,"MemoryAllocationFailed");
-  if (HeapOverflowSanityCheckGetSize(extent,image->rows,length) !=
-        MagickFalse)
+  if (HeapOverflowSanityCheckGetSize(extent,image->rows,length) != MagickFalse)
     ThrowWriterException(ResourceLimitError,"MemoryAllocationFailed");
   *pixel_info=AcquireVirtualMemory(*length,sizeof(*q));
   if (*pixel_info == (MemoryInfo *) NULL)
