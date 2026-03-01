@@ -1143,8 +1143,7 @@ static MagickBooleanType WriteSGIImage(const ImageInfo *image_info,Image *image,
               runlength=(size_t *) RelinquishMagickMemory(runlength);
             ThrowWriterException(ResourceLimitError,"MemoryAllocationFailed");
           }
-        packet_info=AcquireVirtualMemory(extent*image->rows,
-          4*sizeof(*packets));
+        packet_info=AcquireVirtualMemory(extent*image->rows,4*sizeof(*packets));
         if ((offsets == (ssize_t *) NULL) ||
             (runlength == (size_t *) NULL) ||
             (packet_info == (MemoryInfo *) NULL))
